@@ -1,0 +1,65 @@
+/* --- NEW FONTS --- */
+/* Teko: A bold, condensed sans-serif for headings */
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@500;700&display=swap");
+/* Kalam: A stylish, handwritten script for accents */
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
+/* Inter: A clean sans-serif for body text */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for the page */
+body {
+  font-family: "Inter", sans-serif; /* Default font for paragraphs */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- NEW FONT CLASSES --- */
+/* Class for all main headings */
+.font-heading {
+  font-family: "Teko", sans-serif;
+}
+
+/* Class for the special, "hand-crafted" text style */
+.font-script {
+  font-family: "Kalam", cursive;
+  font-weight: 700;
+  letter-spacing: 0.05em; /* Adds a little space between letters */
+}
+
+/* Keyframes for the infinite horizontal scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2700px); /* 6 items * 450px */
+  }
+}
+
+/* Class to apply the animation */
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+/* This class creates the horizontal fade effect on the sides of the marquee */
+.horizontal-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
