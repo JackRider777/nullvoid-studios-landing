@@ -11,37 +11,31 @@ const FloatingNavbar = () => {
 
   return (
     <motion.nav
-      initial={{
-        y: -100,
-        opacity: 0,
-      }}
-      animate={{
-        y: 0,
-        opacity: 1,
-      }}
-      transition={{
-        duration: 0.5,
-        ease: "easeInOut",
-      }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       className="
-        fixed top-6 left-1/2 -translate-x-1/2  // <-- These classes handle the centering
-        z-50                                 
-        flex items-center justify-center gap-6  
-        rounded-full                          
-        px-4 py-2                             
-        bg-black/30                           
-        backdrop-blur-md                      
-        border border-white/10                
-        shadow-lg shadow-black/20             
+        fixed top-4 left-1/2 -translate-x-1/2
+        z-50
+        flex items-center justify-between
+        rounded-full
+        
+        // UPDATED: Responsive padding and width
+        w-[90vw] max-w-fit px-3 py-2 sm:px-4
+        
+        bg-black/30
+        backdrop-blur-md
+        border border-white/10
+        shadow-lg shadow-black/20
       "
     >
       {/* Logo Placeholder */}
-      <a href="#" className="text-white">
+      <a href="#" className="text-white flex-shrink-0">
         <Code className="h-6 w-6" />
       </a>
 
-      {/* Navigation Links */}
-      <div className="hidden sm:flex items-center gap-6">
+      {/* Navigation Links - UPDATED: Hidden on mobile (hidden), visible from sm screens up (sm:flex) */}
+      <div className="hidden sm:flex items-center gap-4 mx-4">
         {navItems.map((item) => (
           <a
             key={item.name}
@@ -57,7 +51,8 @@ const FloatingNavbar = () => {
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="bg-purple-600 text-white font-semibold px-4 py-1.5 rounded-full text-sm"
+        // UPDATED: Adjusted padding and text size for better mobile fit
+        className="bg-purple-600 text-white font-semibold px-4 py-1.5 rounded-full text-xs sm:text-sm flex-shrink-0"
       >
         Start a Project
       </motion.button>
