@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Code, Menu } from "lucide-react"; // Using Code icon for the logo
+import { Code } from "lucide-react"; // Using a placeholder icon for the logo
 
 const FloatingNavbar = () => {
   const navItems = [
@@ -17,8 +17,8 @@ const FloatingNavbar = () => {
       className="
         fixed top-4 left-1/2 -translate-x-1/2
         z-50
-        flex items-center justify-between /* Ensures items are spaced apart */
-        w-[90%] max-w-sm /* Further constrained max-width for safety */
+        flex items-center justify-between /* Changed to space out items */
+        w-[90%] max-w-lg /* CRITICAL FIX: Made width responsive to prevent overflow */
         rounded-full
         px-4 py-2
         bg-black/30
@@ -32,9 +32,8 @@ const FloatingNavbar = () => {
         <Code className="h-6 w-6" />
       </a>
 
-      {/* --- CRITICAL FIX --- */}
-      {/* Navigation Links - Now hidden on screens smaller than `md` (medium) */}
-      <div className="hidden md:flex items-center gap-4">
+      {/* Navigation Links - Hidden on mobile, visible from sm screens up */}
+      <div className="hidden sm:flex items-center gap-4">
         {navItems.map((item) => (
           <a
             key={item.name}
