@@ -2,12 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, animate } from "framer-motion";
 import { Linkedin, Instagram, Dribbble } from "lucide-react";
 
-// Import your assets
+// --- Using your original asset paths ---
 import image1 from "../assets/image1.jpeg";
 import image2 from "../assets/image2.jpg";
 import image4 from "../assets/image4.jpeg";
-// Import your video file
-import videoFile from "../assets/video1.mp4"; // Assuming your video is named image3.mp4
+import videoFile from "../assets/video1.mp4";
 
 // --- COUNTER COMPONENT ---
 function Counter({ from, to }) {
@@ -40,6 +39,7 @@ export const LandingPage = () => {
       <PortfolioSection />
       <ProcessSection />
       <TestimonialsSection />
+      <Footer />
     </main>
   );
 };
@@ -55,7 +55,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold max-w-4xl leading-none text-white uppercase tracking-wider"
+        className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold max-w-4xl leading-tight sm:leading-none text-white uppercase tracking-wider"
       >
         Build a personal brand that gets you{" "}
         <span className="font-script text-purple-400 normal-case">
@@ -68,7 +68,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
-        className="mt-6 text-lg text-gray-400 max-w-xl"
+        className="mt-6 text-base sm:text-lg text-gray-400 max-w-xl"
       >
         We make it happen. NullVoid Studios helps entrepreneurs and founders
         scale their personal brands with strategic design that brings them more
@@ -128,13 +128,13 @@ const ImpactSection = () => {
   ];
 
   return (
-    <section className="py-28 px-4">
-      <h2 className="font-heading text-center text-6xl font-bold uppercase tracking-wider">
+    <section className="py-20 sm:py-28 px-4">
+      <h2 className="font-heading text-center text-5xl sm:text-6xl font-bold uppercase tracking-wider">
         Our{" "}
         <span className="font-script text-purple-400 normal-case">Impact</span>{" "}
         So Far
       </h2>
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-16">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center mt-16">
         {stats.map((stat, index) => (
           <motion.div
             key={index}
@@ -155,7 +155,6 @@ const ImpactSection = () => {
   );
 };
 
-// UPDATED PORTFOLIO SECTION
 const PortfolioSection = () => {
   const projects = [
     {
@@ -171,7 +170,6 @@ const PortfolioSection = () => {
       src: image2,
     },
     {
-      // This item is now a video
       type: "video",
       title: "Brutalist Web",
       description: "UI/UX for a tech firm",
@@ -186,7 +184,7 @@ const PortfolioSection = () => {
   ];
 
   return (
-    <section id="casestudies" className="py-28 px-4">
+    <section id="casestudies" className="py-20 sm:py-28 px-4">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -194,7 +192,7 @@ const PortfolioSection = () => {
         transition={{ duration: 0.6 }}
         className="text-center"
       >
-        <h2 className="font-heading text-6xl font-bold uppercase tracking-wider">
+        <h2 className="font-heading text-5xl sm:text-6xl font-bold uppercase tracking-wider">
           Some of Our{" "}
           <span className="font-script text-purple-400 normal-case">
             Hand-Crafted Pieces.
@@ -215,7 +213,6 @@ const PortfolioSection = () => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="relative aspect-[9/16] rounded-lg overflow-hidden group"
           >
-            {/* Conditional Rendering: Check if the project type is 'video' */}
             {project.type === "video" ? (
               <video
                 src={project.src}
@@ -224,7 +221,7 @@ const PortfolioSection = () => {
                 autoPlay
                 loop
                 muted
-                playsInline // Important for iOS devices
+                playsInline
               />
             ) : (
               <img
@@ -274,13 +271,13 @@ const ProcessSection = () => {
     },
   ];
   return (
-    <section id="process" className="py-28 px-4">
+    <section id="process" className="py-20 sm:py-28 px-4">
       <motion.h2
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.6 }}
-        className="font-heading text-6xl font-bold text-center max-w-4xl mx-auto leading-tight uppercase tracking-wider"
+        className="font-heading text-5xl sm:text-6xl font-bold text-center max-w-4xl mx-auto leading-tight uppercase tracking-wider"
       >
         Our Sophisticated System and Process to Make Your Brand Go{" "}
         <span className="font-script text-purple-400 normal-case">
@@ -299,6 +296,7 @@ const ProcessSection = () => {
             transition={{ duration: 0.6, delay: index * 0.1 }}
           >
             <div className="absolute left-4 top-1 w-4 h-4 rounded-full bg-white transform -translate-x-1/2 ring-4 ring-black z-10" />
+            {/* Mobile optimization: stack columns on small screens */}
             <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-x-8">
               <h3 className="md:col-span-1 text-2xl font-bold text-purple-400">
                 {step.name}
@@ -356,12 +354,12 @@ const TestimonialsSection = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-28">
+    <section className="py-20 sm:py-28">
       <div className="text-center mb-16 px-4">
         <p className="text-lg font-medium text-gray-400">
           Don't take our word for it
         </p>
-        <h2 className="font-heading text-6xl font-bold mt-2 uppercase tracking-wider">
+        <h2 className="font-heading text-5xl sm:text-6xl font-bold mt-2 uppercase tracking-wider">
           Our happy clients say about us
         </h2>
       </div>
@@ -370,7 +368,8 @@ const TestimonialsSection = () => {
           {duplicatedTestimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-[350px] bg-gray-900/80 p-8 rounded-lg border border-white/10 mx-4"
+              // Mobile optimization: Use a slightly smaller fixed width that works better with the animation calculation
+              className="flex-shrink-0 w-[400px] sm:w-[450px] bg-gray-900/80 p-8 rounded-lg border border-white/10 mx-4"
             >
               <div className="flex items-start gap-4">
                 <img
@@ -390,14 +389,13 @@ const TestimonialsSection = () => {
           ))}
         </div>
       </div>
-      <Footer />
     </section>
   );
 };
 
 const Footer = () => {
   return (
-    <footer className="px-8 pt-28 pb-12">
+    <footer className="px-8 pt-20 sm:pt-28 pb-12">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
         <div>
           <h3 className="text-xl font-bold">nullvoidstudios</h3>
@@ -426,7 +424,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="md:col-span-2 flex justify-around">
+        <div className="md:col-span-2 flex flex-col sm:flex-row justify-around gap-8 sm:gap-0">
           <div>
             <h4 className="font-semibold text-base text-white">Sections</h4>
             <ul className="mt-2 space-y-1">
@@ -457,7 +455,7 @@ const Footer = () => {
             </p>
             <a
               href="mailto:commissions@nullvoid.studios"
-              className="text-purple-400 hover:text-purple-300 transition-colors inline-block text-base"
+              className="text-purple-400 hover:text-purple-300 transition-colors inline-block text-base break-all"
             >
               commissions@nullvoid.studios
             </a>

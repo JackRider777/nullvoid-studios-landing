@@ -17,7 +17,8 @@ const FloatingNavbar = () => {
       className="
         fixed top-4 left-1/2 -translate-x-1/2
         z-50
-        flex items-center justify-center gap-4
+        flex items-center justify-between /* Changed to space out items */
+        w-[90%] max-w-lg /* CRITICAL FIX: Made width responsive to prevent overflow */
         rounded-full
         px-4 py-2
         bg-black/30
@@ -31,7 +32,7 @@ const FloatingNavbar = () => {
         <Code className="h-6 w-6" />
       </a>
 
-      {/* Navigation Links - Hidden on mobile (hidden), visible from sm screens up (sm:flex) */}
+      {/* Navigation Links - Hidden on mobile, visible from sm screens up */}
       <div className="hidden sm:flex items-center gap-4">
         {navItems.map((item) => (
           <a
