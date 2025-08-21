@@ -63,3 +63,12 @@ body {
     transparent
   );
 }
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  box-sizing: border-box;
+}
