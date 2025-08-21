@@ -2,6 +2,13 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, animate } from "framer-motion";
 import { Linkedin, Instagram, Dribbble } from "lucide-react";
 
+// Import your assets
+import image1 from "../assets/image1.jpeg";
+import image2 from "../assets/image2.jpg";
+import image4 from "../assets/image4.jpeg";
+// Import your video file
+import videoFile from "../assets/video1.mp4"; // Assuming your video is named image3.mp4
+
 // --- COUNTER COMPONENT ---
 function Counter({ from, to }) {
   const nodeRef = useRef();
@@ -48,7 +55,6 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        // UPDATED: Adjusted font sizes for better mobile responsiveness
         className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold max-w-4xl leading-none text-white uppercase tracking-wider"
       >
         Build a personal brand that gets you{" "}
@@ -149,27 +155,33 @@ const ImpactSection = () => {
   );
 };
 
+// UPDATED PORTFOLIO SECTION
 const PortfolioSection = () => {
   const projects = [
     {
+      type: "image",
       title: "Project Chrome",
       description: "Branding for a B2B AI Startup",
-      imgSrc: "/assets/image1.png",
+      src: image1,
     },
     {
+      type: "image",
       title: "Glitch Apparel",
       description: "Merchandise design",
-      imgSrc: "/assets/image2.png",
+      src: image2,
     },
     {
+      // This item is now a video
+      type: "video",
       title: "Brutalist Web",
       description: "UI/UX for a tech firm",
-      imgSrc: "/assets/image3.png",
+      src: videoFile,
     },
     {
+      type: "image",
       title: "Void Logos",
       description: "Logo suite for new media",
-      imgSrc: "/assets/image4.png",
+      src: image4,
     },
   ];
 
@@ -203,11 +215,24 @@ const PortfolioSection = () => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="relative aspect-[9/16] rounded-lg overflow-hidden group"
           >
-            <img
-              src={project.imgSrc}
-              alt={project.title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
+            {/* Conditional Rendering: Check if the project type is 'video' */}
+            {project.type === "video" ? (
+              <video
+                src={project.src}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                autoPlay
+                loop
+                muted
+                playsInline // Important for iOS devices
+              />
+            ) : (
+              <img
+                src={project.src}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
             <div className="relative h-full flex flex-col justify-end p-6">
               <h3 className="text-2xl font-bold text-white">{project.title}</h3>
