@@ -2,12 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, animate } from "framer-motion";
 import { Linkedin, Instagram, Dribbble } from "lucide-react";
 
-// Make sure your image paths are correct relative to this file
-import image1 from "../assets/image1.jpg";
-import image2 from "../assets/image2.png";
-import image3 from "../assets/image3.jpg";
-import image4 from "../assets/image4.jpg";
-
 // --- COUNTER COMPONENT ---
 function Counter({ from, to }) {
   const nodeRef = useRef();
@@ -54,7 +48,8 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="font-heading text-5xl md:text-7xl font-bold max-w-4xl leading-none text-white uppercase tracking-wider"
+        // UPDATED: Adjusted font sizes for better mobile responsiveness
+        className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold max-w-4xl leading-none text-white uppercase tracking-wider"
       >
         Build a personal brand that gets you{" "}
         <span className="font-script text-purple-400 normal-case">
@@ -154,29 +149,27 @@ const ImpactSection = () => {
   );
 };
 
-// CORRECTED PORTFOLIO SECTION
 const PortfolioSection = () => {
   const projects = [
     {
       title: "Project Chrome",
       description: "Branding for a B2B AI Startup",
-      // FIXED: Removed the extra curly braces. Assign the variable directly.
-      imgSrc: image1,
+      imgSrc: "/assets/image1.png",
     },
     {
       title: "Glitch Apparel",
       description: "Merchandise design",
-      imgSrc: image2,
+      imgSrc: "/assets/image2.png",
     },
     {
       title: "Brutalist Web",
       description: "UI/UX for a tech firm",
-      imgSrc: image3,
+      imgSrc: "/assets/image3.png",
     },
     {
       title: "Void Logos",
       description: "Logo suite for new media",
-      imgSrc: image4,
+      imgSrc: "/assets/image4.png",
     },
   ];
 
@@ -352,7 +345,7 @@ const TestimonialsSection = () => {
           {duplicatedTestimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-[350px] bg-gray-900/80 p-8 rounded-lg border border-white/10 mx-4"
+              className="flex-shrink-0 w-[550px] bg-gray-900/80 p-8 rounded-lg border border-white/10 mx-4"
             >
               <div className="flex items-start gap-4">
                 <img
