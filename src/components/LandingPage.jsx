@@ -370,7 +370,7 @@ const TestimonialsSection = () => {
           {duplicatedTestimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-[550px] bg-gray-900/80 p-8 rounded-lg border border-white/10 mx-4"
+              className="flex-shrink-0 w-[350px] bg-gray-900/80 p-8 rounded-lg border border-white/10 mx-4"
             >
               <div className="flex items-start gap-4">
                 <img
