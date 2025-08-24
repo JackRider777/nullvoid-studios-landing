@@ -3,10 +3,11 @@ import { motion, useInView, animate } from "framer-motion";
 import { Linkedin, Instagram, Dribbble } from "lucide-react";
 
 // --- Using your original asset paths ---
-import image1 from "../assets/image1.jpeg";
+
+import image1 from "../assets/image1.jpg";
 import image2 from "../assets/image2.jpg";
-import image4 from "../assets/image4.jpeg";
-import videoFile from "../assets/video1.mp4";
+import image3 from "../assets/image3.jpg";
+import image4 from "../assets/image4.jpg";
 
 // --- COUNTER COMPONENT ---
 function Counter({ from, to }) {
@@ -70,7 +71,7 @@ const HeroSection = () => {
         transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
         className="mt-6 text-base sm:text-lg text-gray-400 max-w-xl"
       >
-        We make it happen. NullVoid Studios helps entrepreneurs and founders
+        We make it happen. NightCircuit Studios helps entrepreneurs and founders
         scale their personal brands with strategic design that brings them more
         leads and revenue.
       </motion.p>
@@ -170,10 +171,10 @@ const PortfolioSection = () => {
       src: image2,
     },
     {
-      type: "video",
+      type: "image",
       title: "Brutalist Web",
       description: "UI/UX for a tech firm",
-      src: videoFile,
+      src: image3,
     },
     {
       type: "image",
@@ -271,42 +272,43 @@ const ProcessSection = () => {
     },
   ];
   return (
-    <section id="process" className="py-20 sm:py-28 px-4">
+    <section id="process" className="py-20 sm:py-28">
       <motion.h2
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.6 }}
-        className="font-heading text-5xl sm:text-6xl font-bold text-center max-w-4xl mx-auto leading-tight uppercase tracking-wider"
+        className="font-heading text-5xl sm:text-6xl font-bold text-center max-w-4xl mx-auto leading-tight uppercase tracking-wider px-4"
       >
         Our Sophisticated System and Process to Make Your Brand Go{" "}
         <span className="font-script text-purple-400 normal-case">
           Big-Title
         </span>
       </motion.h2>
-      <div className="max-w-4xl mx-auto mt-20 relative">
-        <div className="absolute left-4 top-0 h-full w-0.5 bg-gray-800" />
-        {processSteps.map((step, index) => (
-          <motion.div
-            key={index}
-            className="relative pl-12 mb-12 flex items-start gap-8"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-          >
-            <div className="absolute left-4 top-1 w-4 h-4 rounded-full bg-white transform -translate-x-1/2 ring-4 ring-black z-10" />
-            {/* Mobile optimization: stack columns on small screens */}
-            <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-x-8">
-              <h3 className="md:col-span-1 text-2xl font-bold text-purple-400">
-                {step.name}
-              </h3>
-              <p className="md:col-span-2 text-lg text-gray-400 mt-2 md:mt-0">
-                {step.description}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+      <div className="mt-20 w-full px-6 sm:px-12 md:px-24">
+        <div className="relative">
+          <div className="absolute left-2 top-0 h-full w-0.5 bg-gray-800" />
+          {processSteps.map((step, index) => (
+            <motion.div
+              key={index}
+              className="relative pl-12 mb-12 flex items-start gap-8"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <div className="absolute left-2 top-1 w-4 h-4 rounded-full bg-white transform -translate-x-1/2 ring-4 ring-black z-10" />
+              <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-x-8">
+                <h3 className="md:col-span-1 text-2xl font-bold text-purple-400">
+                  {step.name}
+                </h3>
+                <p className="md:col-span-2 text-lg text-gray-400 mt-2 md:mt-0">
+                  {step.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -318,19 +320,19 @@ const TestimonialsSection = () => {
       name: "Roopesh Vetcha",
       title: "Entrepreneur & Agency Owner",
       quote:
-        "One thing I love about NullVoid is the systems they have in place. Makes it very easy for me to navigate, and they are super supportive.",
+        "One thing I love about NightCircuit is the systems they have in place. Makes it very easy for me to navigate, and they are super supportive.",
     },
     {
       name: "Ujjwal",
       title: "Founder, MarketInc.",
       quote:
-        "One of the best things I've done to save a lot of time and energy as an agency owner was working with NullVoid. The quality of the scripts and the strategies are just mind-blowing!",
+        "One of the best things I've done to save a lot of time and energy as an agency owner was working with NightCircuit. The quality of the scripts and the strategies are just mind-blowing!",
     },
     {
       name: "Anthony Riggio",
       title: "Venture Capitalist",
       quote:
-        "NullVoid never disappoints me with their strategies and comes in with creative ideas, which always go viral!",
+        "NightCircuit never disappoints me with their strategies and comes in with creative ideas, which always go viral!",
     },
     {
       name: "Vashist",
@@ -368,7 +370,6 @@ const TestimonialsSection = () => {
           {duplicatedTestimonials.map((testimonial, index) => (
             <div
               key={index}
-              // Mobile optimization: Use a slightly smaller fixed width that works better with the animation calculation
               className="flex-shrink-0 w-[400px] sm:w-[450px] bg-gray-900/80 p-8 rounded-lg border border-white/10 mx-4"
             >
               <div className="flex items-start gap-4">
@@ -398,7 +399,7 @@ const Footer = () => {
     <footer className="px-8 pt-20 sm:pt-28 pb-12">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
         <div>
-          <h3 className="text-xl font-bold">nullvoidstudios</h3>
+          <h3 className="text-xl font-bold">nightcircuitstudios</h3>
           <p className="mt-2 text-base text-gray-400">
             Empowering Your Projects, Enhancing Your Success, Every Step of the
             Way.
@@ -454,16 +455,16 @@ const Footer = () => {
               Ready to build something different?
             </p>
             <a
-              href="mailto:commissions@nullvoid.studios"
+              href="mailto:commissions@nightcircuit.studios"
               className="text-purple-400 hover:text-purple-300 transition-colors inline-block text-base break-all"
             >
-              commissions@nullvoid.studios
+              commissions@nightcircuit.studios
             </a>
           </div>
         </div>
       </div>
       <div className="mt-16 text-center text-xs text-gray-500 border-t border-white/10 pt-8">
-        <p>© 2025 NullVoid Studios. All rights reserved.</p>
+        <p>© 2025 NightCircuit Studios. All rights reserved.</p>
       </div>
     </footer>
   );

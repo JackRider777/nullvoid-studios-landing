@@ -63,7 +63,7 @@ const FloatingNavbar = () => {
               <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
             <span className="text-white font-semibold text-lg hidden sm:inline">
-              NullVoid
+              NightCircuit
             </span>
           </a>
 
@@ -163,5 +163,4 @@ const FloatingNavbar = () => {
   );
 };
 
-// You would typically export this component to use in your App.js
 export default FloatingNavbar;
